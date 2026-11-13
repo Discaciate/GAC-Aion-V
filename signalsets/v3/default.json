@@ -55,7 +55,7 @@
       "proto": "15765-4-11bit",
       "dbg": true,
       "cmd": {
-        "22": "1002"
+        "22": "111E"
       },
       "freq": 60,
       "signals": [
@@ -68,11 +68,10 @@
             "blsb": false,
             "min": 0,
             "max": 100,
-            "unit": "percent",
-            "div": 100
+            "unit": "percent"
           },
-          "name": "Battery state of health (community mapping)",
-          "description": "Source: https://www.aionv.app/pages/OBD-ITEMS.html#i-7E2-1002. Community decoding from a second-generation Aion V in Sri Lanka; not an official GAC PID specification. Not yet validated on the other versions. Source observed a constant 100%; scaling across degraded packs still needs independent validation.",
+          "name": "Battery state of health (Car Scanner G-Pulse mapping, experimental)",
+          "description": "Car Scanner preset \"Aion Y Plus; Aion V Gen.2 (2024-) (BMS: G-Pulse)\" identifies ECU 7E2, UDS DID 111E as [BMS] SoH, reading two unsigned bytes directly as percentage (multiplier 1, divisor 1, offset 0). The vehicle log returned 00 5D (=93%). This differs from aionv.app, which tentatively labels 111E as a full-charge limit; the meaning and relationship to measured capacity have not been officially verified by GAC. Previous 7E2/1002 corresponds to [BMS] Current Received From DC Charger according to this Car Scanner profile.",
           "suggestedMetric": "stateOfHealth"
         }
       ]
@@ -3331,7 +3330,7 @@
             "div": 5
           },
           "name": "Tire channel 1 pressure",
-          "description": "Source: https://www.aionv.app/pages/OBD-ITEMS.html#i-720-11FF. Community decoding from a second-generation Aion V in Sri Lanka; not an official GAC PID specification. Not yet validated on the Brazilian vehicle. Four consecutive (pressure, temperature) byte pairs. Provisional Pelican widget mapping: channel 1 = front left; physical wheel order is not confirmed and must be checked against vehicle dashboard. Source reports updates only while driving; stationary readings may be stale.",
+          "description": "Source: https://www.aionv.app/pages/OBD-ITEMS.html#i-720-11FF. Pressure byte / 5 psi; temperature byte - 50 degrees C. The original source does NOT confirm wheel order. EXPERIMENTAL mapping inferred from 2026-11-13 comparison of dashboard and Pelican photos: channel 1 = front left, channel 2 = rear right, channel 3 = front right, channel 4 = rear left. Alternative permutations also fit the photos due to similar pressure values and rounding differences. Validate independently before relying on positions; TPMS may update only while moving.",
           "suggestedMetric": "frontLeftTirePressure"
         },
         {
@@ -3347,7 +3346,7 @@
             "add": -50
           },
           "name": "Tire channel 1 temperature",
-          "description": "Source: https://www.aionv.app/pages/OBD-ITEMS.html#i-720-11FF. Community decoding from a second-generation Aion V in Sri Lanka; not an official GAC PID specification. Not yet validated on the Brazilian vehicle. Four consecutive (pressure, temperature) byte pairs. Provisional Pelican widget mapping: channel 1 = front left; physical wheel order is not confirmed and must be checked against vehicle dashboard. Source reports updates only while driving; stationary readings may be stale.",
+          "description": "Source: https://www.aionv.app/pages/OBD-ITEMS.html#i-720-11FF. Pressure byte / 5 psi; temperature byte - 50 degrees C. The original source does NOT confirm wheel order. EXPERIMENTAL mapping inferred from 2026-11-13 comparison of dashboard and Pelican photos: channel 1 = front left, channel 2 = rear right, channel 3 = front right, channel 4 = rear left. Alternative permutations also fit the photos due to similar pressure values and rounding differences. Validate independently before relying on positions; TPMS may update only while moving.",
           "suggestedMetric": "frontLeftTireTemperature"
         },
         {
@@ -3363,8 +3362,8 @@
             "div": 5
           },
           "name": "Tire channel 2 pressure",
-          "description": "Source: https://www.aionv.app/pages/OBD-ITEMS.html#i-720-11FF. Community decoding from a second-generation Aion V in Sri Lanka; not an official GAC PID specification. Not yet validated on the Brazilian vehicle. Four consecutive (pressure, temperature) byte pairs. Provisional Pelican widget mapping: channel 2 = front right; physical wheel order is not confirmed and must be checked against vehicle dashboard. Source reports updates only while driving; stationary readings may be stale.",
-          "suggestedMetric": "frontRightTirePressure"
+          "description": "Source: https://www.aionv.app/pages/OBD-ITEMS.html#i-720-11FF. Pressure byte / 5 psi; temperature byte - 50 degrees C. The original source does NOT confirm wheel order. EXPERIMENTAL mapping inferred from 2026-11-13 comparison of dashboard and Pelican photos: channel 1 = front left, channel 2 = rear right, channel 3 = front right, channel 4 = rear left. Alternative permutations also fit the photos due to similar pressure values and rounding differences. Validate independently before relying on positions; TPMS may update only while moving.",
+          "suggestedMetric": "rearRightTirePressure"
         },
         {
           "id": "AIONV_TIRE_2_TEMPERATURE",
@@ -3379,8 +3378,8 @@
             "add": -50
           },
           "name": "Tire channel 2 temperature",
-          "description": "Source: https://www.aionv.app/pages/OBD-ITEMS.html#i-720-11FF. Community decoding from a second-generation Aion V in Sri Lanka; not an official GAC PID specification. Not yet validated on the Brazilian vehicle. Four consecutive (pressure, temperature) byte pairs. Provisional Pelican widget mapping: channel 2 = front right; physical wheel order is not confirmed and must be checked against vehicle dashboard. Source reports updates only while driving; stationary readings may be stale.",
-          "suggestedMetric": "frontRightTireTemperature"
+          "description": "Source: https://www.aionv.app/pages/OBD-ITEMS.html#i-720-11FF. Pressure byte / 5 psi; temperature byte - 50 degrees C. The original source does NOT confirm wheel order. EXPERIMENTAL mapping inferred from 2026-11-13 comparison of dashboard and Pelican photos: channel 1 = front left, channel 2 = rear right, channel 3 = front right, channel 4 = rear left. Alternative permutations also fit the photos due to similar pressure values and rounding differences. Validate independently before relying on positions; TPMS may update only while moving.",
+          "suggestedMetric": "rearRightTireTemperature"
         },
         {
           "id": "AIONV_TIRE_3_PRESSURE",
@@ -3395,8 +3394,8 @@
             "div": 5
           },
           "name": "Tire channel 3 pressure",
-          "description": "Source: https://www.aionv.app/pages/OBD-ITEMS.html#i-720-11FF. Community decoding from a second-generation Aion V in Sri Lanka; not an official GAC PID specification. Not yet validated on the Brazilian vehicle. Four consecutive (pressure, temperature) byte pairs. Provisional Pelican widget mapping: channel 3 = rear left; physical wheel order is not confirmed and must be checked against vehicle dashboard. Source reports updates only while driving; stationary readings may be stale.",
-          "suggestedMetric": "rearLeftTirePressure"
+          "description": "Source: https://www.aionv.app/pages/OBD-ITEMS.html#i-720-11FF. Pressure byte / 5 psi; temperature byte - 50 degrees C. The original source does NOT confirm wheel order. EXPERIMENTAL mapping inferred from 2026-11-13 comparison of dashboard and Pelican photos: channel 1 = front left, channel 2 = rear right, channel 3 = front right, channel 4 = rear left. Alternative permutations also fit the photos due to similar pressure values and rounding differences. Validate independently before relying on positions; TPMS may update only while moving.",
+          "suggestedMetric": "frontRightTirePressure"
         },
         {
           "id": "AIONV_TIRE_3_TEMPERATURE",
@@ -3411,8 +3410,8 @@
             "add": -50
           },
           "name": "Tire channel 3 temperature",
-          "description": "Source: https://www.aionv.app/pages/OBD-ITEMS.html#i-720-11FF. Community decoding from a second-generation Aion V in Sri Lanka; not an official GAC PID specification. Not yet validated on the Brazilian vehicle. Four consecutive (pressure, temperature) byte pairs. Provisional Pelican widget mapping: channel 3 = rear left; physical wheel order is not confirmed and must be checked against vehicle dashboard. Source reports updates only while driving; stationary readings may be stale.",
-          "suggestedMetric": "rearLeftTireTemperature"
+          "description": "Source: https://www.aionv.app/pages/OBD-ITEMS.html#i-720-11FF. Pressure byte / 5 psi; temperature byte - 50 degrees C. The original source does NOT confirm wheel order. EXPERIMENTAL mapping inferred from 2026-11-13 comparison of dashboard and Pelican photos: channel 1 = front left, channel 2 = rear right, channel 3 = front right, channel 4 = rear left. Alternative permutations also fit the photos due to similar pressure values and rounding differences. Validate independently before relying on positions; TPMS may update only while moving.",
+          "suggestedMetric": "frontRightTireTemperature"
         },
         {
           "id": "AIONV_TIRE_4_PRESSURE",
@@ -3427,8 +3426,8 @@
             "div": 5
           },
           "name": "Tire channel 4 pressure",
-          "description": "Source: https://www.aionv.app/pages/OBD-ITEMS.html#i-720-11FF. Community decoding from a second-generation Aion V in Sri Lanka; not an official GAC PID specification. Not yet validated on the Brazilian vehicle. Four consecutive (pressure, temperature) byte pairs. Provisional Pelican widget mapping: channel 4 = rear right; physical wheel order is not confirmed and must be checked against vehicle dashboard. Source reports updates only while driving; stationary readings may be stale.",
-          "suggestedMetric": "rearRightTirePressure"
+          "description": "Source: https://www.aionv.app/pages/OBD-ITEMS.html#i-720-11FF. Pressure byte / 5 psi; temperature byte - 50 degrees C. The original source does NOT confirm wheel order. EXPERIMENTAL mapping inferred from 2026-11-13 comparison of dashboard and Pelican photos: channel 1 = front left, channel 2 = rear right, channel 3 = front right, channel 4 = rear left. Alternative permutations also fit the photos due to similar pressure values and rounding differences. Validate independently before relying on positions; TPMS may update only while moving.",
+          "suggestedMetric": "rearLeftTirePressure"
         },
         {
           "id": "AIONV_TIRE_4_TEMPERATURE",
@@ -3443,8 +3442,8 @@
             "add": -50
           },
           "name": "Tire channel 4 temperature",
-          "description": "Source: https://www.aionv.app/pages/OBD-ITEMS.html#i-720-11FF. Community decoding from a second-generation Aion V in Sri Lanka; not an official GAC PID specification. Not yet validated on the Brazilian vehicle. Four consecutive (pressure, temperature) byte pairs. Provisional Pelican widget mapping: channel 4 = rear right; physical wheel order is not confirmed and must be checked against vehicle dashboard. Source reports updates only while driving; stationary readings may be stale.",
-          "suggestedMetric": "rearRightTireTemperature"
+          "description": "Source: https://www.aionv.app/pages/OBD-ITEMS.html#i-720-11FF. Pressure byte / 5 psi; temperature byte - 50 degrees C. The original source does NOT confirm wheel order. EXPERIMENTAL mapping inferred from 2026-11-13 comparison of dashboard and Pelican photos: channel 1 = front left, channel 2 = rear right, channel 3 = front right, channel 4 = rear left. Alternative permutations also fit the photos due to similar pressure values and rounding differences. Validate independently before relying on positions; TPMS may update only while moving.",
+          "suggestedMetric": "rearLeftTireTemperature"
         }
       ]
     }
