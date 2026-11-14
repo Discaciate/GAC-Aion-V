@@ -98,7 +98,7 @@
             "unit": "percent"
           },
           "name": "Battery state of charge (dashboard)",
-          "description": "Source: https://www.aionv.app/pages/OBD-ITEMS.html#i-7E2-111A. Community decoding from a second-generation Aion V in Sri Lanka; not an official GAC PID specification. Not yet validated other versions of the vehicle.",
+          "description": "SoC - State of Charge",
           "suggestedMetric": "stateOfCharge"
         }
       ]
@@ -126,7 +126,7 @@
             "div": 10
           },
           "name": "Battery pack voltage",
-          "description": "Source: https://www.aionv.app/pages/OBD-ITEMS.html#i-7E2-1401. Community decoding from a second-generation Aion V in Sri Lanka; not an official GAC PID specification. Not yet validated on other versions of the vehicle.",
+          "description": "Traction Battery as Reported by the BMS.",
           "suggestedMetric": "tractionBatteryVoltage"
         }
       ]
